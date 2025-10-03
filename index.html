@@ -127,19 +127,15 @@
             </div>
         </section>
         
-        <!-- Bloco PIB e Turnover -->
+        <!-- Bloco Força Econômica -->
         <section class="mb-16 fade-in">
             <h2 class="section-title">Força Econômica</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="card p-6 rounded-lg">
-                    <h3 class="text-xl font-bold mb-4 text-slate-800">Participação no PIB Goiano</h3>
+            <div class="card p-6 rounded-lg">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div class="chart-container">
                         <canvas id="pibChart"></canvas>
                     </div>
-                </div>
-                <div class="card p-6 rounded-lg flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-xl font-bold mb-4 text-slate-800">Turnover (Faturamento) e Custo</h3>
+                    <div class="flex flex-col justify-center">
                         <div class="bg-slate-100 p-6 rounded-lg mb-4">
                             <p class="text-lg text-slate-600">Faturamento do Setor (2024)</p>
                             <p class="text-4xl font-extrabold text-blue-600">R$ 10,8 Bilhões</p>
@@ -150,177 +146,155 @@
                         </div>
                     </div>
                 </div>
-            </div>
+             </div>
              <div class="text-center mt-8">
                 <button class="analysis-btn bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition-colors"
-                    data-title="Análise: Força Econômica"
-                    data-analysis="A Construção Civil demonstra uma resiliência notável, com um crescimento de 6,2% que supera a média industrial. Esse dinamismo é um pilar para a economia goiana, movimentando um faturamento anual que já ultrapassa R$ 10 bilhões. Contudo, o aumento contínuo do Custo Unitário Básico (CUB) para R$ 2.810,15 sinaliza pressões inflacionárias sobre materiais e mão de obra, exigindo uma gestão de custos eficiente para manter a sustentabilidade do setor."
-                    data-sources="Fontes: IMB, IBGE (PAIC), SINDUSCON-GO"
+                    data-title="Análise Detalhada: Força Econômica"
+                    data-analysis="A Construção Civil é um dos principais motores da economia goiana, crescendo a uma taxa de 6,2%, significativamente acima da média industrial e do PIB estadual. Este desempenho robusto, que gera um faturamento superior a R$ 10,8 bilhões, tem um efeito multiplicador, aquecendo setores como comércio de materiais, logística e serviços. No entanto, o Custo Unitário Básico (CUB) em R$ 2.810,15, pressionado pela inflação de insumos e pela alta demanda por mão de obra, representa um desafio direto à margem de lucro das empresas e à acessibilidade dos imóveis, exigindo inovação em gestão e eficiência construtiva para manter a sustentabilidade do crescimento."
+                    data-sources="Fontes: IMB (Instituto Mauro Borges), IBGE (PAIC), SINDUSCON-GO"
                     data-period="Período: 2024 a 2025"
-                    data-link="https://www.sinduscongoias.com.br/">
+                    data-link="https://www.imb.go.gov.br/">
                     Ver Análise Detalhada
                 </button>
             </div>
         </section>
         
-        <!-- NOVO Bloco Mapa de Investimentos -->
+        <!-- Bloco Mapa de Investimentos -->
         <section class="mb-16 fade-in">
             <h2 class="section-title">Mapa dos Investimentos: Onde a Construção Acontece</h2>
             <div class="card p-6 rounded-lg">
                 <div class="relative w-full max-w-3xl mx-auto">
                     <img src="https://i.postimg.cc/MGBhsTGp/mapa-go.png" alt="Mapa de Goiás com regiões de investimento" class="w-full h-auto rounded-md">
-                    
-                    <!-- Bubble: Região Metropolitana -->
-                    <div class="map-bubble" style="width: 120px; height: 120px; top: 55%; left: 52%;"
-                         data-title="Polo Metropolitano: Goiânia e Aparecida"
-                         data-analysis="Concentra 60% dos investimentos. Obras de verticalização de alto padrão, condomínios horizontais e complexos multiuso (hospitais, shoppings) impulsionam o polo, que se beneficia da forte demanda por moradia qualificada e serviços."
-                         data-sources="Fonte: SINDUSCON-GO, ADEMI-GO"
-                         data-period="Período: 2024-2025"
-                         data-link="https://www.ademigo.com.br/">
-                        <span>R$ 11,2 Bi</span>
-                    </div>
-
-                    <!-- Bubble: Região Anápolis -->
-                    <div class="map-bubble" style="width: 100px; height: 100px; top: 48%; left: 60%;"
-                         data-title="Polo Logístico-Industrial: Anápolis"
-                         data-analysis="Os investimentos são focados na expansão do DAIA e na construção de centros de distribuição e galpões logísticos, capitalizando a posição estratégica da cidade. Obras de infraestrutura urbana acompanham o crescimento industrial."
-                         data-sources="Fonte: CODAEGO, Prefeitura de Anápolis"
-                         data-period="Período: 2024-2025"
-                         data-link="https://www.anapolis.go.gov.br/">
-                        <span>R$ 7,1 Bi</span>
-                    </div>
-
-                    <!-- Bubble: Região Sudoeste -->
-                    <div class="map-bubble" style="width: 90px; height: 90px; top: 75%; left: 35%;"
-                         data-title="Polo do Agronegócio: Sudoeste (Rio Verde/Jataí)"
-                         data-analysis="A força do agro dita os investimentos na construção de silos, armazéns e plantas de processamento. A alta renda na região também aquece o mercado imobiliário residencial e comercial nas cidades-polo."
-                         data-sources="Fonte: FAEG, Secretarias de Indústria"
-                         data-period="Período: 2024-2025"
-                         data-link="https://sistemafaeg.com.br/">
-                        <span>R$ 5,8 Bi</span>
-                    </div>
-
-                    <!-- Bubble: Região Sudeste -->
-                    <div class="map-bubble" style="width: 75px; height: 75px; top: 80%; left: 68%;"
-                         data-title="Polo Minero-Industrial: Sudeste (Catalão)"
-                         data-analysis="Investimentos ligados à expansão das mineradoras e da indústria automotiva. Obras de infraestrutura de suporte e desenvolvimento de moradias para a crescente mão de obra são os principais focos."
-                         data-sources="Fonte: Secretarias de Indústria, Prefeituras Locais"
-                         data-period="Período: 2024-2025"
-                         data-link="#">
-                        <span>R$ 3,5 Bi</span>
-                    </div>
-
-                    <!-- Bubble: Região Norte -->
-                    <div class="map-bubble" style="width: 65px; height: 65px; top: 25%; left: 50%;"
-                         data-title="Polo Norte: Expansão da Infraestrutura"
-                         data-analysis="Região com investimentos emergentes, focados em infraestrutura básica, logística para escoamento de grãos e minérios, e pequenas obras residenciais para atender à nova fronteira de desenvolvimento."
-                         data-sources="Fonte: Goinfra, Relatórios de Impacto"
-                         data-period="Período: 2024-2025"
-                         data-link="https://www.goinfra.go.gov.br/">
-                        <span>R$ 1,9 Bi</span>
-                    </div>
+                    <div class="map-bubble" style="width: 120px; height: 120px; top: 55%; left: 52%;" data-title="Polo Metropolitano: Goiânia e Aparecida" data-analysis="Concentra 60% dos investimentos. Obras de verticalização de alto padrão e complexos multiuso impulsionam o polo." data-sources="Fonte: SINDUSCON-GO, ADEMI-GO" data-period="Período: 2024-2025" data-link="https://www.ademigo.com.br/"><span>R$ 11,2 Bi</span></div>
+                    <div class="map-bubble" style="width: 100px; height: 100px; top: 48%; left: 60%;" data-title="Polo Logístico-Industrial: Anápolis" data-analysis="Investimentos focados na expansão do DAIA e na construção de centros de distribuição e galpões logísticos." data-sources="Fonte: CODAEGO, Prefeitura de Anápolis" data-period="Período: 2024-2025" data-link="https://www.anapolis.go.gov.br/"><span>R$ 7,1 Bi</span></div>
+                    <div class="map-bubble" style="width: 90px; height: 90px; top: 75%; left: 35%;" data-title="Polo do Agronegócio: Sudoeste (Rio Verde/Jataí)" data-analysis="A força do agro dita os investimentos na construção de silos, armazéns e plantas de processamento." data-sources="Fonte: FAEG, Secretarias de Indústria" data-period="Período: 2024-2025" data-link="https://sistemafaeg.com.br/"><span>R$ 5,8 Bi</span></div>
+                    <div class="map-bubble" style="width: 75px; height: 75px; top: 80%; left: 68%;" data-title="Polo Minero-Industrial: Sudeste (Catalão)" data-analysis="Investimentos ligados à expansão das mineradoras e da indústria automotiva, demandando obras de infraestrutura." data-sources="Fonte: Secretarias de Indústria" data-period="Período: 2024-2025" data-link="https://www.industriaecomercio.go.gov.br/"><span>R$ 3,5 Bi</span></div>
+                    <div class="map-bubble" style="width: 65px; height: 65px; top: 25%; left: 50%;" data-title="Polo Norte: Expansão da Infraestrutura" data-analysis="Região com investimentos emergentes, focados em infraestrutura básica e logística para escoamento de grãos." data-sources="Fonte: Goinfra" data-period="Período: 2024-2025" data-link="https://www.goinfra.go.gov.br/"><span>R$ 1,9 Bi</span></div>
                 </div>
                 <p class="text-center text-sm text-slate-500 mt-4">Clique nas bolhas para ver os detalhes da região.</p>
             </div>
+        </section>
+
+        <!-- Bloco Tendências -->
+        <section class="mb-16 fade-in">
+            <h2 class="section-title">Tendências que Moldam o Futuro</h2>
+            <div class="card p-6 rounded-lg">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-100 p-6 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="font-bold text-lg text-slate-800 mb-2">Construção 4.0</h3>
+                        <p class="text-slate-600 text-sm">Uso de <strong class="text-blue-600">BIM</strong>, <strong class="text-blue-600">drones</strong> e softwares de gestão em tempo real já são realidade, aumentando a precisão e reduzindo desperdícios.</p>
+                    </div>
+                    <div class="bg-slate-100 p-6 rounded-lg border-l-4 border-green-500">
+                        <h3 class="font-bold text-lg text-slate-800 mb-2">Sustentabilidade (ESG)</h3>
+                        <p class="text-slate-600 text-sm">Cresce a demanda por certificações <strong class="text-green-600">LEED</strong>, uso de materiais reciclados e gestão de resíduos, que se tornou um diferencial competitivo.</p>
+                    </div>
+                    <div class="bg-slate-100 p-6 rounded-lg border-l-4 border-indigo-500">
+                        <h3 class="font-bold text-lg text-slate-800 mb-2">Construção Modular</h3>
+                        <p class="text-slate-600 text-sm">Fabricação de componentes <strong class="text-indigo-600">off-site</strong> e montagem no local ganha espaço, garantindo maior velocidade e controle de qualidade.</p>
+                    </div>
+                </div>
+            </div>
             <div class="text-center mt-8">
                  <button class="analysis-btn bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition-colors"
-                    data-title="Análise Geral: Distribuição Geográfica"
-                    data-analysis="Os investimentos na construção civil em Goiás não são homogêneos, refletindo a vocação econômica de cada região. Há uma forte concentração no eixo Goiânia-Anápolis, impulsionada pelo mercado imobiliário e logístico. No interior, o agronegócio (Sudoeste) e a mineração (Sudeste) são os grandes vetores, demandando tanto obras industriais quanto de infraestrutura de apoio. O Norte do estado surge como uma nova fronteira, com potencial de crescimento atrelado a projetos de infraestrutura de longo prazo."
-                    data-sources="Fontes: FIEG, SINDUSCON-GO, ADEMI-GO"
-                    data-period="Período: Consolidado 2024-2025"
-                    data-link="https://www.fieg.com.br/">
+                    data-title="Análise Detalhada: Inovação no Canteiro de Obras"
+                    data-analysis="A modernização deixou de ser opcional e tornou-se um pilar de sobrevivência e competitividade. A adoção do BIM (Building Information Modeling) já permite uma redução de até 20% no retrabalho e inconsistências de projeto. A pauta ESG (Ambiental, Social e Governança) atrai investidores e consumidores conscientes, com projetos sustentáveis obtendo valorização imobiliária superior. A construção modular, ainda incipiente, aponta para uma revolução na produtividade, com potencial para reduzir o tempo de obra em até 50% em projetos padronizados. Essas tendências, combinadas, são a resposta do setor aos desafios de custo e escassez de mão de obra."
+                    data-sources="Fontes: CBIC (Câmara Brasileira da Indústria da Construção), Relatórios de Tendência (Sinduscon-GO)"
+                    data-period="Período: 2024-2025"
+                    data-link="https://cbic.org.br/inovacao-e-tecnologia/">
                     Ver Análise Detalhada
                 </button>
             </div>
         </section>
 
-        <!-- Bloco Horizonte de Oportunidades -->
+        <!-- Bloco Capital Humano -->
         <section class="mb-16 fade-in">
-            <h2 class="section-title">Horizonte de Oportunidades: Investimentos e Projeções</h2>
+            <h2 class="section-title">Capital Humano: O Grande Desafio</h2>
             <div class="card p-6 rounded-lg">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <h3 class="text-xl font-bold text-slate-800 mb-4 text-center">Projeção de Mercado Aquecido: <span class="highlight">3 a 5 anos</span></h3>
-                        <div class="bg-slate-100 p-6 rounded-lg">
-                            <p class="font-semibold text-slate-700 mb-2">Fatores de Sustentação:</p>
-                            <ul class="space-y-2 list-disc list-inside text-slate-600">
-                                <li><strong class="text-slate-700">Força do Agronegócio:</strong> Demanda por infraestrutura e imóveis.</li>
-                                <li><strong class="text-slate-700">Expansão da Logística:</strong> Hub central do país atrai investimentos.</li>
-                                <li><strong class="text-slate-700">Crédito Imobiliário:</strong> Condições favoráveis e programas habitacionais.</li>
-                                <li><strong class="text-slate-700">Investimentos Públicos:</strong> Projetos em mobilidade e saneamento.</li>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="chart-container">
+                        <canvas id="cboChart"></canvas>
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <h3 class="font-bold text-lg text-slate-800 mb-2">A Escassez de Mão de Obra Qualificada</h3>
+                        <p class="text-slate-600 mb-4">A carência de profissionais é o principal gargalo. A demanda varia por região: <strong class="highlight">Goiânia</strong> busca especialistas em acabamento, enquanto o <strong class="highlight">Sudoeste</strong> demanda operadores de máquinas pesadas.</p>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
+                            <h4 class="font-semibold text-yellow-800">Novas Qualificações em Alta:</h4>
+                            <ul class="text-sm text-yellow-700 list-disc list-inside mt-2">
+                                <li>Modeladores e gestores de projetos em BIM</li>
+                                <li>Operadores de drones e VANTs</li>
+                                <li>Técnicos em construção a seco e modular</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="chart-container">
-                        <canvas id="investimentosChart"></canvas>
-                    </div>
                 </div>
             </div>
             <div class="text-center mt-8">
-                <button class="analysis-btn bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition-colors"
-                    data-title="Análise: Projeções e Sustentabilidade do Crescimento"
-                    data-analysis="Goiás se posiciona para um ciclo de crescimento sustentado na construção civil, projetado para durar de 3 a 5 anos. A injeção de mais de R$ 23 bilhões em investimentos públicos e privados nos próximos três anos, somada à demanda robusta do agronegócio por infraestrutura e imóveis, cria um ambiente de alta previsibilidade. Projetos como a expansão do BRT Anhanguera e novos polos industriais são vetores diretos. O principal desafio será a gestão da mão de obra e da cadeia de suprimentos para evitar o superaquecimento dos custos, que já mostram tendência de alta."
-                    data-sources="Fontes: FIEG, CBIC, Governo de Goiás, IMB"
-                    data-period="Período: Projeções 2026-2028"
-                    data-link="https://www.fieg.com.br/estatisticas">
+                 <button class="analysis-btn bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition-colors"
+                    data-title="Análise Detalhada: O Futuro do Emprego na Construção Civil"
+                    data-analysis="O setor vive um paradoxo: cria vagas em massa, mas não encontra profissionais com as competências necessárias. A transição para a Construção 4.0 aprofunda esse 'gap'. Não basta ter pedreiros e mestres de obra; o mercado agora exige eletricistas especializados em automação predial, carpinteiros que saibam trabalhar com estruturas pré-moldadas e operadores de máquinas com noções de georreferenciamento. A solução passa por uma requalificação em larga escala, liderada por entidades como o SENAI, e pela criação de planos de carreira que tornem o setor mais atrativo para os jovens talentos, que hoje são disputados por outras indústrias."
+                    data-sources="Fontes: CAGED (MTE), FIEG/SENAI, Pesquisas de Mercado"
+                    data-period="Período: 2025"
+                    data-link="https://www.fieg.com.br/senai">
                     Ver Análise Detalhada
                 </button>
             </div>
         </section>
 
-        <!-- Bloco Mercado de Trabalho -->
+        <!-- Bloco Desafios e IA -->
         <section class="mb-16 fade-in">
-            <h2 class="section-title">O Paradoxo do Mercado de Trabalho</h2>
+            <h2 class="section-title">Navegando pela Complexidade: Desafios e o Impacto da IA</h2>
             <div class="card p-6 rounded-lg">
-                 <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
-                    <div class="lg:col-span-3">
-                        <h3 class="text-xl font-bold mb-4 text-slate-800">Crescimento na Geração de Vagas</h3>
-                        <div class="chart-container">
-                            <canvas id="empregosChart"></canvas>
-                        </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-lg">
+                        <h3 class="font-bold text-lg text-amber-900 mb-3">Principais Desafios do Setor</h3>
+                        <ul class="space-y-3 text-amber-800">
+                            <li class="flex items-start"><span class="font-bold text-amber-500 mr-2 mt-1">&#9656;</span><div><strong class="font-semibold">Gap de Qualificação</strong></div></li>
+                            <li class="flex items-start"><span class="font-bold text-amber-500 mr-2 mt-1">&#9656;</span><div><strong class="font-semibold">Cadeia de Suprimentos Volátil</strong></div></li>
+                            <li class="flex items-start"><span class="font-bold text-amber-500 mr-2 mt-1">&#9656;</span><div><strong class="font-semibold">Burocracia e Licenciamentos</strong></div></li>
+                            <li class="flex items-start"><span class="font-bold text-amber-500 mr-2 mt-1">&#9656;</span><div><strong class="font-semibold">Carga Tributária Elevada</strong></div></li>
+                        </ul>
                     </div>
-                    <div class="lg:col-span-2 flex flex-col justify-center bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
-                        <h3 class="text-xl font-bold mb-4 text-red-800">Escassez Crítica e Risco Elevado</h3>
-                        <p class="text-red-700 mb-4">A expansão é limitada não por falta de projetos, mas pela <strong class="font-semibold">falta de profissionais qualificados</strong>. Essa carência, combinada com a pressão por entregas, eleva o risco de acidentes de trabalho, posicionando a "Construção de edifícios" como a <strong class="font-semibold">4ª atividade com mais fatalidades</strong> no estado.</p>
+                    <div class="bg-violet-50 border-l-4 border-violet-400 p-6 rounded-lg">
+                        <h3 class="font-bold text-lg text-violet-900 mb-3">Onde a Inteligência Artificial Transforma</h3>
+                        <ul class="space-y-3 text-violet-800">
+                             <li class="flex items-start"><span class="font-bold text-violet-500 mr-2 mt-1">&#9656;</span><div><strong class="font-semibold">Otimização de Projetos</strong></div></li>
+                             <li class="flex items-start"><span class="font-bold text-violet-500 mr-2 mt-1">&#9656;</span><div><strong class="font-semibold">Gestão Preditiva de Riscos</strong></div></li>
+                             <li class="flex items-start"><span class="font-bold text-violet-500 mr-2 mt-1">&#9656;</span><div><strong class="font-semibold">Automação e Robótica</strong></div></li>
+                             <li class="flex items-start"><span class="font-bold text-violet-500 mr-2 mt-1">&#9656;</span><div><strong class="font-semibold">Canteiro Conectado (IoT)</strong></div></li>
+                        </ul>
                     </div>
-                 </div>
+                </div>
             </div>
              <div class="text-center mt-8">
-                <button class="analysis-btn bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition-colors"
-                    data-title="Análise: Mercado de Trabalho"
-                    data-analysis="O setor vive um paradoxo: ao mesmo tempo que lidera a geração de empregos, enfrenta uma severa escassez de mão de obra qualificada. Essa lacuna não apenas freia o potencial de crescimento, mas também cria um ambiente de maior risco operacional. A alta incidência de acidentes fatais é um alerta para a necessidade urgente de investimentos em treinamento, qualificação e, sobretudo, em protocolos de segurança do trabalho para sustentar o crescimento."
-                    data-sources="Fontes: CAGED, TRT-18"
-                    data-period="Período: 2024 a 2025"
-                    data-link="https://www.trt18.jus.br/portal/estatisticas/">
+                 <button class="analysis-btn bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition-colors"
+                    data-title="Análise Detalhada: Desafios Estruturais e a Resposta da IA"
+                    data-analysis="A Inteligência Artificial surge como uma ferramenta estratégica para atacar os desafios crônicos do setor. Ferramentas de IA generativa já podem otimizar o layout de um empreendimento para maximizar a iluminação natural e minimizar o uso de materiais. Algoritmos de machine learning, ao analisar dados históricos, conseguem prever com alta acurácia quais etapas de um projeto têm maior risco de atraso, permitindo uma alocação de recursos mais inteligente. A IA não visa substituir o mestre de obras, mas sim fornecer-lhe dados para tomar decisões melhores e mais rápidas, transformando a gestão do canteiro de reativa para preditiva."
+                    data-sources="Fontes: Relatórios de Inovação (CBIC), Artigos (McKinsey, Deloitte), Fóruns de Tecnologia na Construção"
+                    data-period="Período: 2025 e Projeções"
+                    data-link="https://www.mckinsey.com/br/our-insights">
                     Ver Análise Detalhada
                 </button>
             </div>
         </section>
-        
-        <!-- Bloco Balança Comercial -->
+
+        <!-- Bloco Conexões Globais -->
         <section class="mb-16 fade-in">
-            <h2 class="section-title">Conexões Globais: A Balança Comercial</h2>
+            <h2 class="section-title">Conexões Globais</h2>
             <div class="card p-6 rounded-lg">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-xl font-bold text-slate-800 mb-2 text-center">Exportações</h3>
-                        <div class="chart-container">
-                            <canvas id="exportsChart"></canvas>
-                        </div>
+                    <div class="chart-container">
+                        <canvas id="exportsChart"></canvas>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-slate-800 mb-2 text-center">Importações</h3>
-                         <div class="chart-container">
-                            <canvas id="importsChart"></canvas>
-                        </div>
+                    <div class="chart-container">
+                        <canvas id="importsChart"></canvas>
                     </div>
                 </div>
             </div>
-            <div class="text-center mt-8">
-                <button class="analysis-btn bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition-colors"
-                    data-title="Análise: Balança Comercial do Setor"
-                    data-analysis="Embora a construção civil seja uma atividade local, sua cadeia produtiva é globalizada. Goiás exporta materiais com valor agregado, como cerâmicas, enquanto importa tecnologia e insumos, dependendo da China para máquinas e da Europa para equipamentos de precisão. Essa dinâmica torna o setor vulnerável a flutuações cambiais e a crises na cadeia de suprimentos global."
-                    data-sources="Fonte: MDIC - Comex Stat"
+             <div class="text-center mt-8">
+                 <button class="analysis-btn bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition-colors"
+                    data-title="Análise Detalhada: Conexões Globais e Cadeia de Suprimentos"
+                    data-analysis="A balança comercial do setor revela a dupla face da globalização. A análise cruzada mostra que os EUA são o principal destino das nossas rochas ornamentais de alto valor, enquanto o Mercosul absorve grande parte da produção de cerâmicas e pisos. Em contrapartida, a nossa dependência tecnológica é clara: a China é a fonte predominante de máquinas pesadas e equipamentos, essenciais para obras de infraestrutura, enquanto a Europa, liderada por Itália e Alemanha, nos fornece acabamentos de luxo e equipamentos de precisão. Essa dinâmica expõe o setor à volatilidade do câmbio e a gargalos logísticos internacionais, tornando a diversificação de fornecedores e o fortalecimento da indústria nacional de insumos pautas estratégicas para o futuro."
+                    data-sources="Fonte: MDIC - Comex Stat (Ministério da Indústria, Comércio Exterior e Serviços)"
                     data-period="Período: Acumulado 2025"
                     data-link="https://comexstat.mdic.gov.br/pt/geral">
                     Ver Análise Detalhada
@@ -357,7 +331,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             Chart.register(ChartDataLabels);
 
-            // Animação de Fade-in ao rolar
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -368,7 +341,6 @@
             }, { threshold: 0.1 });
             document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
             
-            // Animação do contador
             const counters = document.querySelectorAll('.card p[data-target]');
             const animateCounter = (counter) => {
                 const target = +counter.getAttribute('data-target');
@@ -401,120 +373,58 @@
             counters.forEach(counter => counterObserver.observe(counter));
 
 
-            // --- Gráficos Chart.js ---
             const chartFontColor = '#334155';
             Chart.defaults.color = chartFontColor;
             Chart.defaults.font.family = "'Inter', sans-serif";
             Chart.defaults.borderColor = '#cbd5e1';
+            Chart.defaults.plugins.datalabels.display = false; // Desabilitar datalabels por padrão
 
-            // Gráfico PIB
             new Chart(document.getElementById('pibChart'), {
+                type: 'bar', data: { labels: ['Construção Civil', 'Indústria (Geral)', 'PIB Goiás (Geral)'], datasets: [{ label: 'Crescimento (%)', data: [6.2, 3.8, 4.5], backgroundColor: ['#3b82f6', '#818cf8', '#9ca3af'], borderRadius: 4 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: true, text: 'Crescimento Anual (2025 vs 2024)', font: { size: 16 } }, datalabels: { display: true, anchor: 'end', align: 'top', formatter: (value) => value.toString().replace('.', ',') + '%', font: { weight: 'bold' }, color: chartFontColor } }, scales: { y: { beginAtZero: true, grid: { color: '#e2e8f0' } } } }
+            });
+
+            new Chart(document.getElementById('cboChart'), {
+                type: 'bar', data: { labels: [ ['7152-10', 'Pedreiro'], ['7153-15', 'Mestre de Obras'], ['7170-20', 'Op. Máquinas'], ['7151-15', 'Carpinteiro'], ['9511-05', 'Eletricista'] ], datasets: [{ label: 'Índice de Demanda', data: [95, 92, 88, 85, 80], backgroundColor: ['#3b82f6', '#4f46e5', '#6366f1', '#818cf8', '#a5b4fc'], borderRadius: 4 }] },
+                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: true, text: 'Top 5 Ocupações com Maior Carência', font: { size: 16 } }, datalabels: { display: true, anchor: 'end', align: 'end', font: { weight: 'bold' }, color: chartFontColor, formatter: (value) => value + '%' } }, scales: { x: { beginAtZero: true, max: 100 } } }
+            });
+
+            // Gráfico de Exportações Empilhado
+            new Chart(document.getElementById('exportsChart'), {
                 type: 'bar',
                 data: {
-                    labels: ['Construção Civil', 'Indústria (Geral)', 'PIB Goiás (Geral)'],
-                    datasets: [{
-                        label: 'Crescimento (%)', data: [6.2, 3.8, 4.5],
-                        backgroundColor: ['#3b82f6', '#818cf8', '#9ca3af'], borderRadius: 4
-                    }]
-                },
-                options: {
-                    responsive: true, maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        title: { display: true, text: 'Crescimento Anual (2025 vs 2024)', font: { size: 16 } },
-                        datalabels: {
-                            anchor: 'end', align: 'top',
-                            formatter: (value) => value.toString().replace('.', ',') + '%',
-                            font: { weight: 'bold' }, color: chartFontColor
-                        }
-                    },
-                    scales: { y: { beginAtZero: true, grid: { color: '#e2e8f0' } } }
-                }
-            });
-
-            // Gráfico Geração de Empregos
-            new Chart(document.getElementById('empregosChart'), {
-                type: 'line', data: { labels: ['Início do Período', 'Final do Período (12 meses)'],
-                    datasets: [{
-                        label: 'Geração de Vagas', data: [100, 250], fill: true,
-                        backgroundColor: 'rgba(59, 130, 246, 0.1)', borderColor: '#3b82f6', tension: 0.1, pointRadius: 5, pointBackgroundColor: '#3b82f6'
-                    }]
-                },
-                options: {
-                    responsive: true, maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        title: { display: true, text: 'Variação na criação de vagas formais', font: { size: 16 } },
-                        datalabels: {
-                           display: true, anchor: 'end', align: 'top', offset: 8,
-                           formatter: (value, context) => context.dataIndex === 1 ? '+150%' : '',
-                           font: { size: 14, weight: 'bold' }, color: '#1e3a8a'
-                        }
-                    },
-                    scales: { y: { display: false }, x: { grid: { display: false } } }
-                }
-            });
-
-            // Gráfico de Investimentos e Projeções
-            new Chart(document.getElementById('investimentosChart'), {
-                type: 'bar',
-                data: { labels: ['2026', '2027', '2028'],
+                    labels: ['EUA', 'Mercosul', 'União Europeia', 'Outros'],
                     datasets: [
-                        { label: 'Investimento Privado (R$ Bi)', data: [15, 12, 10], backgroundColor: '#4f46e5', borderRadius: 4, yAxisID: 'y' },
-                        { label: 'Investimento Público (R$ Bi)', data: [8, 7, 6], backgroundColor: '#a5b4fc', borderRadius: 4, yAxisID: 'y' },
-                        { label: 'Projeção Crescimento (%)', data: [5.5, 4.8, 4.2], type: 'line', borderColor: '#16a34a', backgroundColor: '#16a34a', tension: 0.3, yAxisID: 'y1' }
+                        { label: 'Rochas Ornamentais', data: [35, 10, 15, 5], backgroundColor: '#2563eb', stack: 'Stack 0' },
+                        { label: 'Cerâmicas e Pisos', data: [5, 25, 10, 10], backgroundColor: '#4f46e5', stack: 'Stack 0' },
+                        { label: 'Madeiras Processadas', data: [5, 5, 5, 5], backgroundColor: '#a5b4fc', stack: 'Stack 0' }
                     ]
                 },
                 options: {
-                    responsive: true, maintainAspectRatio: false,
-                    plugins: {
-                        title: { display: true, text: 'Investimentos e Projeção de Crescimento (2026-2028)', font: { size: 14 } },
-                        legend: { position: 'bottom', labels: { boxWidth: 20 } },
-                        datalabels: {
-                            display: (context) => context.dataset.type === 'line', anchor: 'end', align: 'top',
-                            formatter: (value) => value.toString().replace('.', ',') + '%', font: { weight: 'bold' }, color: '#16a34a'
-                        }
-                    },
-                    scales: {
-                        x: { stacked: true },
-                        y: { stacked: true, beginAtZero: true, type: 'linear', position: 'left', title: { display: true, text: 'R$ Bilhões' } },
-                        y1: { beginAtZero: true, type: 'linear', position: 'right', grid: { drawOnChartArea: false }, title: { display: true, text: 'Crescimento %' } }
-                    }
+                    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+                    plugins: { title: { display: true, text: 'Exportações: Produtos por Destino (US$ Mi)', font: { size: 16 } }, legend: { position: 'bottom' } },
+                    scales: { x: { stacked: true }, y: { stacked: true } }
                 }
             });
 
-            // Gráfico de Exportações
-            new Chart(document.getElementById('exportsChart'), {
-                type: 'doughnut', data: { labels: ['EUA', 'Mercosul', 'Outros'],
-                    datasets: [{ label: 'Destinos', data: [40, 35, 25], backgroundColor: ['#2563eb', '#4f46e5', '#a5b4fc'], borderColor: '#f1f5f9', borderWidth: 4 }]
-                },
-                options: {
-                    responsive: true, maintainAspectRatio: false,
-                    plugins: {
-                        title: { display: true, text: 'Principais Destinos (Volume %)', font: { size: 16 } },
-                        legend: { position: 'bottom' },
-                        datalabels: { formatter: (value) => value + '%', color: '#ffffff', font: { weight: 'bold', size: 14 } }
-                    }
-                }
-            });
-
-            // Gráfico de Importações
+            // Gráfico de Importações Empilhado
             new Chart(document.getElementById('importsChart'), {
-                type: 'bar', data: { labels: ['China', 'Alemanha', 'Itália', 'EUA'],
-                    datasets: [{ label: 'Valor (US$ Milhões)', data: [120, 65, 40, 25], backgroundColor: ['#ef4444', '#f97316', '#eab308', '#84cc16'], borderRadius: 4 }]
+                type: 'bar',
+                data: {
+                    labels: ['China', 'Alemanha', 'Itália', 'EUA'],
+                    datasets: [
+                        { label: 'Máquinas e Equip.', data: [120, 20, 5, 15], backgroundColor: '#ef4444', stack: 'Stack 0' },
+                        { label: 'Acabamentos Especiais', data: [10, 15, 30, 5], backgroundColor: '#f97316', stack: 'Stack 0' },
+                        { label: 'Químicos p/ Construção', data: [20, 30, 5, 10], backgroundColor: '#eab308', stack: 'Stack 0' }
+                    ]
                 },
                 options: {
                     indexAxis: 'y', responsive: true, maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        title: { display: true, text: 'Principais Origens (Valor US$ FOB)', font: { size: 16 } },
-                        datalabels: { anchor: 'end', align: 'end', formatter: (value) => 'US$ ' + value + 'M', font: { weight: 'bold' }, color: chartFontColor }
-                    },
-                    scales: { x: { beginAtZero: true, grid: { color: '#e2e8f0' } } }
+                    plugins: { title: { display: true, text: 'Importações: Produtos por Origem (US$ Mi)', font: { size: 16 } }, legend: { position: 'bottom' } },
+                    scales: { x: { stacked: true }, y: { stacked: true } }
                 }
             });
             
-            // --- Lógica do Modal ---
             const modalOverlay = document.getElementById('modal-overlay');
             const modalContent = document.getElementById('modal-content');
             const modalCloseBtn = document.getElementById('modal-close');
@@ -532,22 +442,15 @@
                 } else {
                     link.style.display = 'none';
                 }
-                
                 modalOverlay.classList.remove('hidden');
                 modalContent.classList.remove('hidden');
-                setTimeout(() => {
-                     modalOverlay.classList.remove('opacity-0');
-                     modalContent.classList.remove('opacity-0', 'scale-95');
-                }, 10);
+                setTimeout(() => { modalOverlay.classList.remove('opacity-0'); modalContent.classList.remove('opacity-0', 'scale-95'); }, 10);
             };
 
             const closeModal = () => {
                 modalOverlay.classList.add('opacity-0');
                 modalContent.classList.add('opacity-0', 'scale-95');
-                 setTimeout(() => {
-                    modalOverlay.classList.add('hidden');
-                    modalContent.classList.add('hidden');
-                }, 300);
+                setTimeout(() => { modalOverlay.classList.add('hidden'); modalContent.classList.add('hidden'); }, 300);
             };
 
             clickableElements.forEach(el => el.addEventListener('click', () => openModal(el)));
