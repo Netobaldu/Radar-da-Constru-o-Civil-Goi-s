@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Radar da Construção Civil em Goiás</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #334155; /* slate-700 */
+        }
+        .data-source {
+            font-size: 0.7rem;
+            color: #64748b; /* slate-500 */
+            text-align: right;
+            margin-top: 4px;
+        }
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0; /* slate-200 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .chart-container {
+            position: relative;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            background-color: #f1f5f9; /* slate-100 */
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .highlight {
+            color: #4f46e5; /* indigo-600 */
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #2563eb, #4f46e5); /* blue-600 to indigo-600 */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        #modal-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+        #modal-content {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        .map-bubble {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background-color: rgba(79, 70, 229, 0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: transform 0.2s ease-out, background-color 0.2s ease-out;
+            border: 2px solid white;
+            backdrop-filter: blur(2px);
+        }
+        .map-bubble:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            background-color: rgba(37, 99, 235, 0.9);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="text-center py-12 px-4 bg-white border-b border-slate-200">
+        <img src="https://i.postimg.cc/4yFwJkvQ/SELO-FIEG-75-ANOS-COLOR.png" alt="Logomarca FIEG 75 Anos" class="mx-auto h-24 mb-6">
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight text-slate-800 mb-4">
+            Radar da Construção Civil
+        </h1>
+        <p class="text-xl md:text-2xl font-light text-blue-600">Um Setor em Plena Expansão em Goiás</p>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+
+        <!-- Bloco de Destaques -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <div class="card p-6 rounded-lg text-center fade-in">
+                <h3 class="text-lg font-semibold text-slate-600">Empresas Ativas</h3>
+                <p class="text-5xl font-bold my-2 highlight" data-target="2650">0</p>
+                <p class="text-slate-500">Um ecossistema robusto e em crescimento.</p>
+                <p class="data-source">Fonte: IBGE/PAIC (2024)</p>
+            </div>
+            <div class="card p-6 rounded-lg text-center fade-in">
+                <h3 class="text-lg font-semibold text-slate-600">Empregos Formais</h3>
+                <p class="text-5xl font-bold my-2 highlight" data-target="112500">0</p>
+                <p class="text-slate-500">Principal motor de geração de vagas no estado.</p>
+                <p class="data-source">Fonte: CAGED (Ago/2025)</p>
+            </div>
+            <div class="card p-6 rounded-lg text-center fade-in">
+                <h3 class="text-lg font-semibold text-slate-600">Posição Nacional</h3>
+                <p class="text-5xl font-bold my-2 highlight">8ª</p>
+                <p class="text-slate-500">Consolidado entre as maiores potências do país.</p>
+                <p class="data-source">Fonte: IBGE/PAIC (2023)</p>
+            </div>
+             <div class="card p-6 rounded-lg text-center fade-in">
+                <h3 class="text-lg font-semibold text-slate-600">Crescimento do Setor</h3>
+                <p class="text-5xl font-bold my-2 highlight" data-target="6.2" data-suffix="%">0%</p>
+                <p class="text-slate-500">Superando a média da indústria goiana.</p>
+                <p class="data-source">Fonte: IMB (Set/2025)</p>
+            </div>
+        </section>
+        
+        <!-- Bloco PIB e Turnover -->
+        <section class="mb-16 fade-in">
+            <h2 class="section-title">Força Econômica</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4 text-slate-800">Participação no PIB Goiano</h3>
+                    <div class="chart-container">
+                        <canvas id="pibChart"></canvas>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-slate-800">Turnover (Faturamento) e Custo</h3>
+                        <div class="bg-slate-100 p-6 rounded-lg mb-4">
+                            <p class="text-lg text-slate-600">Faturamento do Setor (2024)</p>
+                            <p class="text-4xl font-extrabold text-blue-600">R$ 10,8 Bilhões</p>
+                        </div>
+                        <div class="bg-slate-100 p-6 rounded-lg">
+                            <p class="text-lg text-slate-600">Custo Unitário Básico (CUB/m²)</p>
+                            <p class="text-4xl font-extrabold text-blue-600">R$ 2.810,15</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="text-center mt-8">
+                <button class="analysis-btn bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition-colors"
+                    data-title="Análise: Força Econômica"
+                    data-analysis="A Construção Civil demonstra uma resiliência notável, com um crescimento de 6,2% que supera a média industrial. Esse dinamismo é um pilar para a economia goiana, movimentando um faturamento anual que já ultrapassa R$ 10 bilhões. Contudo, o aumento contínuo do Custo Unitário Básico (CUB) para R$ 2.810,15 sinaliza pressões inflacionárias sobre materiais e mão de obra, exigindo uma gestão de custos eficiente para manter a sustentabilidade do setor."
+                    data-sources="Fontes: IMB, IBGE (PAIC), SINDUSCON-GO"
+                    data-period="Período: 2024 a 2025"
+                    data-link="https://www.sinduscongoias.com.br/">
+                    Ver Análise Detalhada
+                </button>
+            </div>
+        </section>
+        
+        <!-- NOVO Bloco Mapa de Investimentos -->
+        <section class="mb-16 fade-in">
+            <h2 class="section-title">Mapa dos Investimentos: Onde a Construção Acontece</h2>
+            <div class="card p-6 rounded-lg">
+                <div class="relative w-full max-w-3xl mx-auto">
+                    <img src="https://i.postimg.cc/MGBhsTGp/mapa-go.png" alt="Mapa de Goiás com regiões de investimento" class="w-full h-auto rounded-md">
+                    
+                    <!-- Bubble: Região Metropolitana -->
+                    <div class="map-bubble" style="width: 120px; height: 120px; top: 55%; left: 52%;"
+                         data-title="Polo Metropolitano: Goiânia e Aparecida"
+                         data-analysis="Concentra 60% dos investimentos. Obras de verticalização de alto padrão, condomínios horizontais e complexos multiuso (hospitais, shoppings) impulsionam o polo, que se beneficia da forte demanda por moradia qualificada e serviços."
+                         data-sources="Fonte: SINDUSCON-GO, ADEMI-GO"
+                         data-period="Período: 2024-2025"
+                         data-link="https://www.ademigo.com.br/">
+                        <span>R$ 11,2 Bi</span>
+                    </div>
+
+                    <!-- Bubble: Região Anápolis -->
+                    <div class="map-bubble" style="width: 100px; height: 100px; top: 48%; left: 60%;"
+                         data-title="Polo Logístico-Industrial: Anápolis"
+                         data-analysis="Os investimentos são focados na expansão do DAIA e na construção de centros de distribuição e galpões logísticos, capitalizando a posição estratégica da cidade. Obras de infraestrutura urbana acompanham o crescimento industrial."
+                         data-sources="Fonte: CODAEGO, Prefeitura de Anápolis"
+                         data-period="Período: 2024-2025"
+                         data-link="https://www.anapolis.go.gov.br/">
+                        <span>R$ 7,1 Bi</span>
+                    </div>
+
+                    <!-- Bubble: Região Sudoeste -->
+                    <div class="map-bubble" style="width: 90px; height: 90px; top: 75%; left: 35%;"
+                         data-title="Polo do Agronegócio: Sudoeste (Rio Verde/Jataí)"
+                         data-analysis="A força do agro dita os investimentos na construção de silos, armazéns e plantas de processamento. A alta renda na região também aquece o mercado imobiliário residencial e comercial nas cidades-polo."
+                         data-sources="Fonte: FAEG, Secretarias de Indústria"
+                         data-period="Período: 2024-2025"
+                         data-link="https://sistemafaeg.com.br/">
+                        <span>R$ 5,8 Bi</span>
+                    </div>
+
+                    <!-- Bubble: Região Sudeste -->
+                    <div class="map-bubble" style="width: 75px; height: 75px; top: 80%; left: 68%;"
+                         data-title="Polo Minero-Industrial: Sudeste (Catalão)"
+                         data-analysis="Investimentos ligados à expansão das mineradoras e da indústria automotiva. Obras de infraestrutura de suporte e desenvolvimento de moradias para a crescente mão de obra são os principais focos."
+                         data-sources="Fonte: Secretarias de Indústria, Prefeituras Locais"
+                         data-period="Período: 2024-2025"
+                         data-link="#">
+                        <span>R$ 3,5 Bi</span>
+                    </div>
+
+                    <!-- Bubble: Região Norte -->
+                    <div class="map-bubble" style="width: 65px; height: 65px; top: 25%; left: 50%;"
+                         data-title="Polo Norte: Expansão da Infraestrutura"
+                         data-analysis="Região com investimentos emergentes, focados em infraestrutura básica, logística para escoamento de grãos e minérios, e pequenas obras residenciais para atender à nova fronteira de desenvolvimento."
+                         data-sources="Fonte: Goinfra, Relatórios de Impacto"
+                         data-period="Período: 2024-2025"
+                         data-link="https://www.goinfra.go.gov.br/">
+                        <span>R$ 1,9 Bi</span>
+                    </div>
+                </div>
+                <p class="text-center text-sm text-slate-500 mt-4">Clique nas bolhas para ver os detalhes da região.</p>
+            </div>
+            <div class="text-center mt-8">
+                 <button class="analysis-btn bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition-colors"
+                    data-title="Análise Geral: Distribuição Geográfica"
+                    data-analysis="Os investimentos na construção civil em Goiás não são homogêneos, refletindo a vocação econômica de cada região. Há uma forte concentração no eixo Goiânia-Anápolis, impulsionada pelo mercado imobiliário e logístico. No interior, o agronegócio (Sudoeste) e a mineração (Sudeste) são os grandes vetores, demandando tanto obras industriais quanto de infraestrutura de apoio. O Norte do estado surge como uma nova fronteira, com potencial de crescimento atrelado a projetos de infraestrutura de longo prazo."
+                    data-sources="Fontes: FIEG, SINDUSCON-GO, ADEMI-GO"
+                    data-period="Período: Consolidado 2024-2025"
+                    data-link="https://www.fieg.com.br/">
+                    Ver Análise Detalhada
+                </button>
+            </div>
+        </section>
+
+        <!-- Bloco Horizonte de Oportunidades -->
+        <section class="mb-16 fade-in">
+            <h2 class="section-title">Horizonte de Oportunidades: Investimentos e Projeções</h2>
+            <div class="card p-6 rounded-lg">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-4 text-center">Projeção de Mercado Aquecido: <span class="highlight">3 a 5 anos</span></h3>
+                        <div class="bg-slate-100 p-6 rounded-lg">
+                            <p class="font-semibold text-slate-700 mb-2">Fatores de Sustentação:</p>
+                            <ul class="space-y-2 list-disc list-inside text-slate-600">
+                                <li><strong class="text-slate-700">Força do Agronegócio:</strong> Demanda por infraestrutura e imóveis.</li>
+                                <li><strong class="text-slate-700">Expansão da Logística:</strong> Hub central do país atrai investimentos.</li>
+                                <li><strong class="text-slate-700">Crédito Imobiliário:</strong> Condições favoráveis e programas habitacionais.</li>
+                                <li><strong class="text-slate-700">Investimentos Públicos:</strong> Projetos em mobilidade e saneamento.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="investimentosChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <button class="analysis-btn bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition-colors"
+                    data-title="Análise: Projeções e Sustentabilidade do Crescimento"
+                    data-analysis="Goiás se posiciona para um ciclo de crescimento sustentado na construção civil, projetado para durar de 3 a 5 anos. A injeção de mais de R$ 23 bilhões em investimentos públicos e privados nos próximos três anos, somada à demanda robusta do agronegócio por infraestrutura e imóveis, cria um ambiente de alta previsibilidade. Projetos como a expansão do BRT Anhanguera e novos polos industriais são vetores diretos. O principal desafio será a gestão da mão de obra e da cadeia de suprimentos para evitar o superaquecimento dos custos, que já mostram tendência de alta."
+                    data-sources="Fontes: FIEG, CBIC, Governo de Goiás, IMB"
+                    data-period="Período: Projeções 2026-2028"
+                    data-link="https://www.fieg.com.br/estatisticas">
+                    Ver Análise Detalhada
+                </button>
+            </div>
+        </section>
+
+        <!-- Bloco Mercado de Trabalho -->
+        <section class="mb-16 fade-in">
+            <h2 class="section-title">O Paradoxo do Mercado de Trabalho</h2>
+            <div class="card p-6 rounded-lg">
+                 <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
+                    <div class="lg:col-span-3">
+                        <h3 class="text-xl font-bold mb-4 text-slate-800">Crescimento na Geração de Vagas</h3>
+                        <div class="chart-container">
+                            <canvas id="empregosChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-2 flex flex-col justify-center bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                        <h3 class="text-xl font-bold mb-4 text-red-800">Escassez Crítica e Risco Elevado</h3>
+                        <p class="text-red-700 mb-4">A expansão é limitada não por falta de projetos, mas pela <strong class="font-semibold">falta de profissionais qualificados</strong>. Essa carência, combinada com a pressão por entregas, eleva o risco de acidentes de trabalho, posicionando a "Construção de edifícios" como a <strong class="font-semibold">4ª atividade com mais fatalidades</strong> no estado.</p>
+                    </div>
+                 </div>
+            </div>
+             <div class="text-center mt-8">
+                <button class="analysis-btn bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition-colors"
+                    data-title="Análise: Mercado de Trabalho"
+                    data-analysis="O setor vive um paradoxo: ao mesmo tempo que lidera a geração de empregos, enfrenta uma severa escassez de mão de obra qualificada. Essa lacuna não apenas freia o potencial de crescimento, mas também cria um ambiente de maior risco operacional. A alta incidência de acidentes fatais é um alerta para a necessidade urgente de investimentos em treinamento, qualificação e, sobretudo, em protocolos de segurança do trabalho para sustentar o crescimento."
+                    data-sources="Fontes: CAGED, TRT-18"
+                    data-period="Período: 2024 a 2025"
+                    data-link="https://www.trt18.jus.br/portal/estatisticas/">
+                    Ver Análise Detalhada
+                </button>
+            </div>
+        </section>
+        
+        <!-- Bloco Balança Comercial -->
+        <section class="mb-16 fade-in">
+            <h2 class="section-title">Conexões Globais: A Balança Comercial</h2>
+            <div class="card p-6 rounded-lg">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2 text-center">Exportações</h3>
+                        <div class="chart-container">
+                            <canvas id="exportsChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2 text-center">Importações</h3>
+                         <div class="chart-container">
+                            <canvas id="importsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <button class="analysis-btn bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition-colors"
+                    data-title="Análise: Balança Comercial do Setor"
+                    data-analysis="Embora a construção civil seja uma atividade local, sua cadeia produtiva é globalizada. Goiás exporta materiais com valor agregado, como cerâmicas, enquanto importa tecnologia e insumos, dependendo da China para máquinas e da Europa para equipamentos de precisão. Essa dinâmica torna o setor vulnerável a flutuações cambiais e a crises na cadeia de suprimentos global."
+                    data-sources="Fonte: MDIC - Comex Stat"
+                    data-period="Período: Acumulado 2025"
+                    data-link="https://comexstat.mdic.gov.br/pt/geral">
+                    Ver Análise Detalhada
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8 px-4 bg-white border-t border-slate-200">
+        <p class="text-slate-500 text-sm">Infográfico gerado com base na "Análise Setorial Aprofundada da Indústria da Construção Civil em Goiás".</p>
+        <p class="text-slate-400 text-xs mt-2">Os dados refletem os períodos indicados nas fontes e estão sujeitos a atualizações.</p>
+    </footer>
+    
+    <!-- Modal -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden opacity-0"></div>
+    <div id="modal-content" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-lg shadow-2xl w-11/12 max-w-2xl z-50 hidden opacity-0 transform scale-95">
+        <h2 id="modal-title" class="text-2xl font-bold mb-4 text-slate-800"></h2>
+        <p id="modal-analysis" class="text-slate-600 mb-6"></p>
+        <div class="text-sm text-slate-500">
+            <p id="modal-sources" class="font-semibold"></p>
+            <p id="modal-period"></p>
+        </div>
+        <div class="mt-6">
+            <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
+                Consultar Fonte
+            </a>
+        </div>
+        <button id="modal-close" class="absolute top-4 right-4 text-slate-500 hover:text-slate-800 text-2xl">&times;</button>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Chart.register(ChartDataLabels);
+
+            // Animação de Fade-in ao rolar
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+            
+            // Animação do contador
+            const counters = document.querySelectorAll('.card p[data-target]');
+            const animateCounter = (counter) => {
+                const target = +counter.getAttribute('data-target');
+                const suffix = counter.getAttribute('data-suffix') || '';
+                const speed = 100;
+                
+                const updateCount = () => {
+                    const count = +counter.innerText.replace(suffix, '').replace(/\./g, '').replace(/,/g, '.');
+                    const increment = target / speed;
+
+                    if (count < target) {
+                        let newCount = count + increment;
+                        if (newCount > target) newCount = target;
+                        counter.innerText = (target.toString().includes('.')) ? newCount.toFixed(1).replace('.', ',') + suffix : Math.ceil(newCount).toLocaleString('pt-BR') + suffix;
+                        setTimeout(updateCount, 15);
+                    } else {
+                         counter.innerText = (target.toString().includes('.')) ? target.toFixed(1).replace('.', ',') + suffix : target.toLocaleString('pt-BR') + suffix;
+                    }
+                };
+                updateCount();
+            };
+            const counterObserver = new IntersectionObserver((entries) => {
+                 entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                       animateCounter(entry.target);
+                       counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            counters.forEach(counter => counterObserver.observe(counter));
+
+
+            // --- Gráficos Chart.js ---
+            const chartFontColor = '#334155';
+            Chart.defaults.color = chartFontColor;
+            Chart.defaults.font.family = "'Inter', sans-serif";
+            Chart.defaults.borderColor = '#cbd5e1';
+
+            // Gráfico PIB
+            new Chart(document.getElementById('pibChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Construção Civil', 'Indústria (Geral)', 'PIB Goiás (Geral)'],
+                    datasets: [{
+                        label: 'Crescimento (%)', data: [6.2, 3.8, 4.5],
+                        backgroundColor: ['#3b82f6', '#818cf8', '#9ca3af'], borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: 'Crescimento Anual (2025 vs 2024)', font: { size: 16 } },
+                        datalabels: {
+                            anchor: 'end', align: 'top',
+                            formatter: (value) => value.toString().replace('.', ',') + '%',
+                            font: { weight: 'bold' }, color: chartFontColor
+                        }
+                    },
+                    scales: { y: { beginAtZero: true, grid: { color: '#e2e8f0' } } }
+                }
+            });
+
+            // Gráfico Geração de Empregos
+            new Chart(document.getElementById('empregosChart'), {
+                type: 'line', data: { labels: ['Início do Período', 'Final do Período (12 meses)'],
+                    datasets: [{
+                        label: 'Geração de Vagas', data: [100, 250], fill: true,
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)', borderColor: '#3b82f6', tension: 0.1, pointRadius: 5, pointBackgroundColor: '#3b82f6'
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: 'Variação na criação de vagas formais', font: { size: 16 } },
+                        datalabels: {
+                           display: true, anchor: 'end', align: 'top', offset: 8,
+                           formatter: (value, context) => context.dataIndex === 1 ? '+150%' : '',
+                           font: { size: 14, weight: 'bold' }, color: '#1e3a8a'
+                        }
+                    },
+                    scales: { y: { display: false }, x: { grid: { display: false } } }
+                }
+            });
+
+            // Gráfico de Investimentos e Projeções
+            new Chart(document.getElementById('investimentosChart'), {
+                type: 'bar',
+                data: { labels: ['2026', '2027', '2028'],
+                    datasets: [
+                        { label: 'Investimento Privado (R$ Bi)', data: [15, 12, 10], backgroundColor: '#4f46e5', borderRadius: 4, yAxisID: 'y' },
+                        { label: 'Investimento Público (R$ Bi)', data: [8, 7, 6], backgroundColor: '#a5b4fc', borderRadius: 4, yAxisID: 'y' },
+                        { label: 'Projeção Crescimento (%)', data: [5.5, 4.8, 4.2], type: 'line', borderColor: '#16a34a', backgroundColor: '#16a34a', tension: 0.3, yAxisID: 'y1' }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        title: { display: true, text: 'Investimentos e Projeção de Crescimento (2026-2028)', font: { size: 14 } },
+                        legend: { position: 'bottom', labels: { boxWidth: 20 } },
+                        datalabels: {
+                            display: (context) => context.dataset.type === 'line', anchor: 'end', align: 'top',
+                            formatter: (value) => value.toString().replace('.', ',') + '%', font: { weight: 'bold' }, color: '#16a34a'
+                        }
+                    },
+                    scales: {
+                        x: { stacked: true },
+                        y: { stacked: true, beginAtZero: true, type: 'linear', position: 'left', title: { display: true, text: 'R$ Bilhões' } },
+                        y1: { beginAtZero: true, type: 'linear', position: 'right', grid: { drawOnChartArea: false }, title: { display: true, text: 'Crescimento %' } }
+                    }
+                }
+            });
+
+            // Gráfico de Exportações
+            new Chart(document.getElementById('exportsChart'), {
+                type: 'doughnut', data: { labels: ['EUA', 'Mercosul', 'Outros'],
+                    datasets: [{ label: 'Destinos', data: [40, 35, 25], backgroundColor: ['#2563eb', '#4f46e5', '#a5b4fc'], borderColor: '#f1f5f9', borderWidth: 4 }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        title: { display: true, text: 'Principais Destinos (Volume %)', font: { size: 16 } },
+                        legend: { position: 'bottom' },
+                        datalabels: { formatter: (value) => value + '%', color: '#ffffff', font: { weight: 'bold', size: 14 } }
+                    }
+                }
+            });
+
+            // Gráfico de Importações
+            new Chart(document.getElementById('importsChart'), {
+                type: 'bar', data: { labels: ['China', 'Alemanha', 'Itália', 'EUA'],
+                    datasets: [{ label: 'Valor (US$ Milhões)', data: [120, 65, 40, 25], backgroundColor: ['#ef4444', '#f97316', '#eab308', '#84cc16'], borderRadius: 4 }]
+                },
+                options: {
+                    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: 'Principais Origens (Valor US$ FOB)', font: { size: 16 } },
+                        datalabels: { anchor: 'end', align: 'end', formatter: (value) => 'US$ ' + value + 'M', font: { weight: 'bold' }, color: chartFontColor }
+                    },
+                    scales: { x: { beginAtZero: true, grid: { color: '#e2e8f0' } } }
+                }
+            });
+            
+            // --- Lógica do Modal ---
+            const modalOverlay = document.getElementById('modal-overlay');
+            const modalContent = document.getElementById('modal-content');
+            const modalCloseBtn = document.getElementById('modal-close');
+            const clickableElements = document.querySelectorAll('.analysis-btn, .map-bubble');
+
+            const openModal = (el) => {
+                document.getElementById('modal-title').innerText = el.dataset.title;
+                document.getElementById('modal-analysis').innerText = el.dataset.analysis;
+                document.getElementById('modal-sources').innerText = el.dataset.sources;
+                document.getElementById('modal-period').innerText = el.dataset.period;
+                const link = document.getElementById('modal-link');
+                if (el.dataset.link && el.dataset.link !== '#') {
+                    link.href = el.dataset.link;
+                    link.style.display = 'inline-block';
+                } else {
+                    link.style.display = 'none';
+                }
+                
+                modalOverlay.classList.remove('hidden');
+                modalContent.classList.remove('hidden');
+                setTimeout(() => {
+                     modalOverlay.classList.remove('opacity-0');
+                     modalContent.classList.remove('opacity-0', 'scale-95');
+                }, 10);
+            };
+
+            const closeModal = () => {
+                modalOverlay.classList.add('opacity-0');
+                modalContent.classList.add('opacity-0', 'scale-95');
+                 setTimeout(() => {
+                    modalOverlay.classList.add('hidden');
+                    modalContent.classList.add('hidden');
+                }, 300);
+            };
+
+            clickableElements.forEach(el => el.addEventListener('click', () => openModal(el)));
+            modalCloseBtn.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', closeModal);
+        });
+    </script>
+</body>
+</html>
+
