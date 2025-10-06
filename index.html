@@ -102,7 +102,7 @@
         <!-- Bloco de Destaques -->
         <section class="mb-16 fade-in">
              <h2 class="section-title">Termômetro 2024-2025</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 <div class="card p-6 rounded-lg text-center">
                     <h3 class="text-lg font-semibold text-slate-600">Estabelecimentos Ativos</h3>
                     <p class="text-5xl font-bold my-2 highlight" data-target="21400">0</p>
@@ -111,53 +111,35 @@
                 </div>
                 <div class="card p-6 rounded-lg text-center">
                     <h3 class="text-lg font-semibold text-slate-600">Estoque de Empregos</h3>
-                    <p class="text-5xl font-bold my-2 highlight" data-target="115780">0</p>
+                    <p class="text-5xl font-bold my-2 highlight" data-target="110464">0</p>
                     <p class="text-slate-500">Vínculos formais ativos no setor.</p>
-                    <p class="data-source">Fonte: MTE/RAIS (Dez/2023)</p>
+                    <p class="data-source">Fonte: Novo CAGED (Ago/2025)</p>
                 </div>
                 <div class="card p-6 rounded-lg text-center">
-                    <h3 class="text-lg font-semibold text-slate-600">Saldo de Emprego</h3>
-                    <p class="text-5xl font-bold my-2 highlight" data-target="38373">+0</p>
-                    <p class="text-slate-500">Novas vagas no Brasil (mês de referência).</p>
-                    <p class="data-source">Fonte: Novo CAGED (Jan/2025)</p>
-                </div>
-                 <div class="card p-6 rounded-lg text-center">
-                    <h3 class="text-lg font-semibold text-slate-600">Crescimento da Atividade</h3>
-                    <p class="text-5xl font-bold my-2 highlight" data-target="4.3" data-suffix="%">+0%</p>
-                    <p class="text-slate-500">Variação mensal que impulsionou a indústria.</p>
-                    <p class="data-source">Fonte: IMB (Mar/2025)</p>
+                    <h3 class="text-lg font-semibold text-slate-600">Saldo de Emprego (Ano)</h3>
+                    <p class="text-5xl font-bold my-2 highlight" data-target="12889">+0</p>
+                    <p class="text-slate-500">Novas vagas em Goiás (Jan-Ago).</p>
+                    <p class="data-source">Fonte: Novo CAGED (2025)</p>
                 </div>
             </div>
         </section>
         
         <!-- Bloco Força Econômica -->
         <section class="mb-16 fade-in">
-            <h2 class="section-title">Força Econômica e Confiança</h2>
+            <h2 class="section-title">Força Econômica e Mercado de Trabalho</h2>
             <div class="card p-6 rounded-lg">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="lg:col-span-2 chart-container">
-                        <canvas id="pibChart"></canvas>
-                    </div>
-                    <div class="flex flex-col justify-center gap-4">
-                        <div class="bg-slate-100 p-4 rounded-lg">
-                            <p class="text-md text-slate-600">Faturamento do Setor</p>
-                            <p class="text-3xl font-extrabold text-blue-600">R$ 10,8 Bilhões</p>
-                            <p class="data-source">(2024)</p>
-                        </div>
-                        <div class="bg-slate-100 p-4 rounded-lg">
-                            <p class="text-md text-slate-600">Índice de Confiança (ICEI)</p>
-                            <p class="text-3xl font-extrabold text-blue-600">55,2 pontos</p>
-                             <p class="data-source">(Acima de 50 = otimismo)</p>
-                        </div>
+                <div class="grid grid-cols-1 lg:grid-cols-1 gap-8">
+                    <div class="chart-container">
+                        <canvas id="empregoChart"></canvas>
                     </div>
                 </div>
              </div>
              <div class="text-center mt-8">
                 <button class="analysis-btn bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition-colors"
-                    data-title="Análise Detalhada: Força Econômica e Confiança"
-                    data-analysis="A construção civil não apenas representa uma fatia significativa do PIB industrial goiano, como também lidera seu crescimento, conforme aponta o IMB. Esse dinamismo é refletido no Índice de Confiança do Empresário da Indústria da Construção (ICEI), que se mantém em território otimista, sinalizando expectativas positivas quanto ao nível de atividade e emprego para os próximos meses. A base do setor é sólida, com mais de 21 mil estabelecimentos ativos (IBGE/CEMPRE 2022) e um estoque de mais de 115 mil empregos formais (RAIS 2023). A combinação de canteiros de obras ativos, geração de vagas e confiança empresarial sustenta o papel do setor como um pilar da economia estadual."
-                    data-sources="Fontes: IMB, IBGE (CEMPRE 2022, PAIC 2022), MTE (RAIS 2023), CNI (Sondagem da Construção)"
-                    data-period="Período: 2022 a 2025">
+                    data-title="Análise Detalhada: Dinâmica do Emprego Formal"
+                    data-analysis="A evolução do emprego formal na construção civil em Goiás demonstra a resiliência e o aquecimento do setor em 2025. O gráfico revela picos de contratação em meses estratégicos, como Abril, refletindo o início de novas obras após o período chuvoso. Apesar das flutuações mensais, o saldo consistentemente positivo ao longo do ano culminou em quase 13 mil novas vagas criadas até agosto. Esse resultado não apenas impulsiona o estoque total de empregos para mais de 110 mil, mas também solidifica a construção como um dos principais motores de geração de postos de trabalho no estado, com um efeito multiplicador em toda a cadeia produtiva."
+                    data-sources="Fontes: Novo CAGED/MTP, Banco de Dados CBIC"
+                    data-period="Período: Janeiro a Agosto de 2025">
                     Ver Análise Detalhada
                 </button>
             </div>
@@ -367,9 +349,75 @@
             Chart.defaults.borderColor = '#cbd5e1';
             Chart.defaults.plugins.datalabels.display = false; // Desabilitar datalabels por padrão
 
-            new Chart(document.getElementById('pibChart'), {
-                type: 'bar', data: { labels: ['Construção Civil', 'Indústria (Geral)', 'PIB Goiás (Geral)'], datasets: [{ label: 'Crescimento (%)', data: [6.2, 3.8, 4.5], backgroundColor: ['#3b82f6', '#818cf8', '#9ca3af'], borderRadius: 4 }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, title: { display: true, text: 'Crescimento Anual Acumulado', font: { size: 16 } }, datalabels: { display: true, anchor: 'end', align: 'top', formatter: (value) => value.toString().replace('.', ',') + '%', font: { weight: 'bold' }, color: chartFontColor } }, scales: { y: { beginAtZero: true, grid: { color: '#e2e8f0' } } } }
+            const empregoData = {
+                labels: ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO'],
+                admissoes: [9981, 9840, 9672, 10275, 9706, 9354, 9351, 9196],
+                desligamentos: [7383, 8402, 8481, 7247, 8709, 7687, 8337, 8240],
+                saldos: [2598, 1438, 1191, 3028, 997, 1667, 1014, 956]
+            };
+            new Chart(document.getElementById('empregoChart'), {
+                type: 'bar',
+                data: {
+                    labels: empregoData.labels,
+                    datasets: [
+                        {
+                            type: 'line',
+                            label: 'Saldo',
+                            data: empregoData.saldos,
+                            borderColor: '#16a34a', // green-600
+                            backgroundColor: '#16a34a',
+                            borderWidth: 3,
+                            fill: false,
+                            tension: 0.4,
+                            yAxisID: 'y1',
+                        },
+                        {
+                            label: 'Admissões',
+                            data: empregoData.admissoes,
+                            backgroundColor: '#3b82f6', // blue-500
+                            borderRadius: 4,
+                            yAxisID: 'y',
+                        },
+                        {
+                            label: 'Desligamentos',
+                            data: empregoData.desligamentos,
+                            backgroundColor: '#ef4444', // red-500
+                            borderRadius: 4,
+                            yAxisID: 'y',
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: { display: true, text: 'Evolução do Emprego Formal na Construção Civil - Goiás 2025', font: { size: 16 } },
+                        legend: { position: 'bottom' }
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Admissões / Desligamentos'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            grid: {
+                                drawOnChartArea: false, 
+                            },
+                             title: {
+                                display: true,
+                                text: 'Saldo'
+                            }
+                        }
+                    }
+                }
             });
 
             new Chart(document.getElementById('cboChart'), {
